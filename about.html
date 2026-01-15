@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Chinese zodiac compatibility, the 12 animal signs, 5 elements, and how they influence relationship harmony.">
+  <title>About Chinese Zodiac Compatibility - Harmony Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles/main.css">
+  <style>
+    .element-card {
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      color: white;
+    }
+
+    .element-card h4 {
+      color: white;
+      margin-bottom: var(--space-sm);
+    }
+
+    .element-card .chinese {
+      font-family: var(--font-chinese);
+      font-size: 2rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .element-wood { background: linear-gradient(135deg, #228B22, #32CD32); }
+    .element-fire { background: linear-gradient(135deg, #DC143C, #FF6347); }
+    .element-earth { background: linear-gradient(135deg, #DAA520, #F4A460); }
+    .element-metal { background: linear-gradient(135deg, #A9A9A9, #C0C0C0); }
+    .element-water { background: linear-gradient(135deg, #1E90FF, #00BFFF); }
+
+    .zodiac-detail-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-lg);
+    }
+
+    .zodiac-detail-card .emoji {
+      font-size: 4rem;
+      flex-shrink: 0;
+    }
+
+    .zodiac-detail-card .info h4 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .zodiac-detail-card .chinese {
+      font-family: var(--font-chinese);
+      color: var(--rose-primary);
+      font-size: 1.5rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .zodiac-detail-card .years {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: var(--space-md);
+    }
+
+    .compatibility-diagram {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      box-shadow: var(--shadow-md);
+    }
+
+    .trine-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .trine-group:nth-child(1) { background: var(--rose-pale); }
+    .trine-group:nth-child(2) { background: var(--gold-pale); }
+    .trine-group:nth-child(3) { background: var(--jade-light); }
+    .trine-group:nth-child(4) { background: var(--cream-dark); }
+
+    .trine-animals {
+      display: flex;
+      gap: var(--space-md);
+      font-size: 2rem;
+    }
+
+    .trine-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .zodiac-detail-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9775;</div>
+        <div class="logo-text">Harmony<span>Match</span></div>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="index.html#calculator" class="btn btn-primary btn-sm">Get Started</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="section" style="padding-top: 120px; background: var(--gradient-subtle);">
+    <div class="container text-center">
+      <h1>About Chinese Zodiac Compatibility</h1>
+      <p class="text-muted" style="font-size: 1.25rem; max-width: 700px; margin: var(--space-lg) auto 0;">
+        Discover the ancient wisdom behind relationship harmony through the Chinese zodiac system
+      </p>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="section">
+    <div class="container container-md">
+      <div class="text-center mb-2xl">
+        <div class="divider-ornate">
+          <span>&#32536;</span>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <div class="report-content">
+          <p style="font-size: 1.125rem; line-height: 1.8;">
+            Chinese astrology, or Shengxiao, is one of the oldest astrological systems in the world,
+            with origins dating back over 2,000 years. Unlike Western astrology which focuses on
+            birth month, Chinese astrology assigns characteristics based on your birth year,
+            creating a 12-year cycle of animal signs.
+          </p>
+          <p style="font-size: 1.125rem; line-height: 1.8;">
+            This system combines three key elements: the 12 zodiac animals, the 5 fundamental
+            elements (Wu Xing), and the yin-yang polarity. Together, these create a rich tapestry
+            of personality traits and compatibility patterns that have guided relationships
+            throughout Chinese history.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 Zodiac Signs -->
+  <section class="section bg-cream" id="zodiac-signs">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <h2>The 12 Zodiac Animals</h2>
+        <p class="text-muted">Each animal represents unique traits and energies</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-lg">
+        <!-- Rat -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128000;</div>
+          <div class="info">
+            <h4>Rat</h4>
+            <div class="chinese">&#40736;</div>
+            <p class="text-muted">
+              Clever, resourceful, and quick-witted. Rats are charming and ambitious,
+              with excellent social skills and sharp business acumen.
+            </p>
+            <div class="years">Years: 1924, 1936, 1948, 1960, 1972, 1984, 1996, 2008, 2020</div>
+          </div>
+        </div>
+
+        <!-- Ox -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128002;</div>
+          <div class="info">
+            <h4>Ox</h4>
+            <div class="chinese">&#29275;</div>
+            <p class="text-muted">
+              Diligent, dependable, and determined. Oxen are known for their strength,
+              patience, and methodical approach to achieving goals.
+            </p>
+            <div class="years">Years: 1925, 1937, 1949, 1961, 1973, 1985, 1997, 2009, 2021</div>
+          </div>
+        </div>
+
+        <!-- Tiger -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128005;</div>
+          <div class="info">
+            <h4>Tiger</h4>
+            <div class="chinese">&#34382;</div>
+            <p class="text-muted">
+              Brave, competitive, and confident. Tigers are natural leaders with
+              magnetic personalities and a passion for adventure.
+            </p>
+            <div class="years">Years: 1926, 1938, 1950, 1962, 1974, 1986, 1998, 2010, 2022</div>
+          </div>
+        </div>
+
+        <!-- Rabbit -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128007;</div>
+          <div class="info">
+            <h4>Rabbit</h4>
+            <div class="chinese">&#20820;</div>
+            <p class="text-muted">
+              Gentle, elegant, and compassionate. Rabbits are artistic souls with
+              refined taste and a natural talent for diplomacy.
+            </p>
+            <div class="years">Years: 1927, 1939, 1951, 1963, 1975, 1987, 1999, 2011, 2023</div>
+          </div>
+        </div>
+
+        <!-- Dragon -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128050;</div>
+          <div class="info">
+            <h4>Dragon</h4>
+            <div class="chinese">&#40857;</div>
+            <p class="text-muted">
+              Powerful, ambitious, and charismatic. Dragons are natural achievers
+              with big dreams and the confidence to pursue them.
+            </p>
+            <div class="years">Years: 1928, 1940, 1952, 1964, 1976, 1988, 2000, 2012, 2024</div>
+          </div>
+        </div>
+
+        <!-- Snake -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128013;</div>
+          <div class="info">
+            <h4>Snake</h4>
+            <div class="chinese">&#34503;</div>
+            <p class="text-muted">
+              Wise, intuitive, and sophisticated. Snakes are deep thinkers with
+              excellent intuition and an appreciation for life's finer things.
+            </p>
+            <div class="years">Years: 1929, 1941, 1953, 1965, 1977, 1989, 2001, 2013, 2025</div>
+          </div>
+        </div>
+
+        <!-- Horse -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128052;</div>
+          <div class="info">
+            <h4>Horse</h4>
+            <div class="chinese">&#39532;</div>
+            <p class="text-muted">
+              Energetic, independent, and adventurous. Horses love freedom and travel,
+              bringing enthusiasm and warmth to their relationships.
+            </p>
+            <div class="years">Years: 1930, 1942, 1954, 1966, 1978, 1990, 2002, 2014, 2026</div>
+          </div>
+        </div>
+
+        <!-- Goat -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128016;</div>
+          <div class="info">
+            <h4>Goat</h4>
+            <div class="chinese">&#32650;</div>
+            <p class="text-muted">
+              Creative, gentle, and empathetic. Goats are artistic and kind-hearted,
+              with a strong sense of justice and appreciation for beauty.
+            </p>
+            <div class="years">Years: 1931, 1943, 1955, 1967, 1979, 1991, 2003, 2015, 2027</div>
+          </div>
+        </div>
+
+        <!-- Monkey -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128053;</div>
+          <div class="info">
+            <h4>Monkey</h4>
+            <div class="chinese">&#29492;</div>
+            <p class="text-muted">
+              Clever, curious, and witty. Monkeys are problem-solvers with quick minds
+              and a playful sense of humor that lights up any room.
+            </p>
+            <div class="years">Years: 1932, 1944, 1956, 1968, 1980, 1992, 2004, 2016, 2028</div>
+          </div>
+        </div>
+
+        <!-- Rooster -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128019;</div>
+          <div class="info">
+            <h4>Rooster</h4>
+            <div class="chinese">&#40481;</div>
+            <p class="text-muted">
+              Observant, hardworking, and confident. Roosters are honest and practical,
+              with strong attention to detail and pride in their accomplishments.
+            </p>
+            <div class="years">Years: 1933, 1945, 1957, 1969, 1981, 1993, 2005, 2017, 2029</div>
+          </div>
+        </div>
+
+        <!-- Dog -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128021;</div>
+          <div class="info">
+            <h4>Dog</h4>
+            <div class="chinese">&#29399;</div>
+            <p class="text-muted">
+              Loyal, honest, and protective. Dogs are devoted partners and friends,
+              valuing integrity and fairness above all else.
+            </p>
+            <div class="years">Years: 1934, 1946, 1958, 1970, 1982, 1994, 2006, 2018, 2030</div>
+          </div>
+        </div>
+
+        <!-- Pig -->
+        <div class="zodiac-detail-card">
+          <div class="emoji">&#128055;</div>
+          <div class="info">
+            <h4>Pig</h4>
+            <div class="chinese">&#29482;</div>
+            <p class="text-muted">
+              Generous, compassionate, and sincere. Pigs are warm-hearted individuals
+              who enjoy life's pleasures and value genuine connections.
+            </p>
+            <div class="years">Years: 1935, 1947, 1959, 1971, 1983, 1995, 2007, 2019, 2031</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Five Elements -->
+  <section class="section" id="elements">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <h2>The Five Elements (Wu Xing)</h2>
+        <p class="text-muted">Each element adds another layer of personality and compatibility</p>
+      </div>
+
+      <div class="grid grid-cols-5 gap-lg mb-2xl">
+        <div class="element-card element-wood">
+          <div class="chinese">&#26408;</div>
+          <h4>Wood</h4>
+          <p style="font-size: 0.875rem; opacity: 0.9;">
+            Growth, creativity, kindness, flexibility
+          </p>
+        </div>
+
+        <div class="element-card element-fire">
+          <div class="chinese">&#28779;</div>
+          <h4>Fire</h4>
+          <p style="font-size: 0.875rem; opacity: 0.9;">
+            Passion, energy, enthusiasm, warmth
+          </p>
+        </div>
+
+        <div class="element-card element-earth">
+          <div class="chinese">&#22303;</div>
+          <h4>Earth</h4>
+          <p style="font-size: 0.875rem; opacity: 0.9;">
+            Stability, practicality, reliability, nurturing
+          </p>
+        </div>
+
+        <div class="element-card element-metal">
+          <div class="chinese">&#37329;</div>
+          <h4>Metal</h4>
+          <p style="font-size: 0.875rem; opacity: 0.9;">
+            Strength, determination, precision, ambition
+          </p>
+        </div>
+
+        <div class="element-card element-water">
+          <div class="chinese">&#27700;</div>
+          <h4>Water</h4>
+          <p style="font-size: 0.875rem; opacity: 0.9;">
+            Wisdom, intuition, adaptability, depth
+          </p>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <div class="report-content">
+          <h4>The Generating Cycle (Sheng)</h4>
+          <p>
+            Elements support and nurture each other in a creative cycle:
+            <strong>Wood feeds Fire, Fire creates Earth (ash), Earth bears Metal,
+            Metal carries Water (condensation), Water nourishes Wood</strong>.
+            Partners with elements in this cycle naturally support each other's growth.
+          </p>
+
+          <h4>The Controlling Cycle (Ke)</h4>
+          <p>
+            Elements also have controlling relationships:
+            <strong>Wood parts Earth, Earth absorbs Water, Water extinguishes Fire,
+            Fire melts Metal, Metal chops Wood</strong>.
+            Understanding this cycle helps partners navigate power dynamics mindfully.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compatibility Principles -->
+  <section class="section bg-cream" id="compatibility">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <h2>Compatibility Principles</h2>
+        <p class="text-muted">Understanding the groups and relationships between signs</p>
+      </div>
+
+      <div class="compatibility-diagram">
+        <h3 class="mb-xl">The Four Trines (Best Matches)</h3>
+        <p class="text-muted mb-xl">
+          Animals in the same trine share similar personalities and values,
+          creating naturally harmonious relationships.
+        </p>
+
+        <div class="trine-group">
+          <div class="trine-animals">
+            <span>&#128000;</span>
+            <span>&#128050;</span>
+            <span>&#128053;</span>
+          </div>
+          <div>
+            <div class="trine-name">First Trine: The Doers</div>
+            <div class="text-muted">Rat, Dragon, Monkey - Action-oriented achievers</div>
+          </div>
+        </div>
+
+        <div class="trine-group">
+          <div class="trine-animals">
+            <span>&#128002;</span>
+            <span>&#128013;</span>
+            <span>&#128019;</span>
+          </div>
+          <div>
+            <div class="trine-name">Second Trine: The Thinkers</div>
+            <div class="text-muted">Ox, Snake, Rooster - Intellectual and determined</div>
+          </div>
+        </div>
+
+        <div class="trine-group">
+          <div class="trine-animals">
+            <span>&#128005;</span>
+            <span>&#128052;</span>
+            <span>&#128021;</span>
+          </div>
+          <div>
+            <div class="trine-name">Third Trine: The Protectors</div>
+            <div class="text-muted">Tiger, Horse, Dog - Independent and humanitarian</div>
+          </div>
+        </div>
+
+        <div class="trine-group">
+          <div class="trine-animals">
+            <span>&#128007;</span>
+            <span>&#128016;</span>
+            <span>&#128055;</span>
+          </div>
+          <div>
+            <div class="trine-name">Fourth Trine: The Diplomats</div>
+            <div class="text-muted">Rabbit, Goat, Pig - Artistic and empathetic</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mb-lg">Other Relationships</h3>
+
+        <div class="grid grid-cols-2 gap-xl">
+          <div>
+            <h4 style="color: var(--jade); margin-bottom: var(--space-md);">Secret Friends</h4>
+            <p class="text-muted">
+              Special pairs that share a deep, private understanding:
+              Rat-Ox, Tiger-Pig, Rabbit-Dog, Dragon-Rooster, Snake-Monkey, Horse-Goat.
+            </p>
+          </div>
+
+          <div>
+            <h4 style="color: var(--rose-primary); margin-bottom: var(--space-md);">Clash Signs</h4>
+            <p class="text-muted">
+              Opposite signs that may face challenges:
+              Rat-Horse, Ox-Goat, Tiger-Monkey, Rabbit-Rooster, Dragon-Dog, Snake-Pig.
+              These pairings require more effort but can still thrive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yin Yang Section -->
+  <section class="section">
+    <div class="container container-md">
+      <div class="text-center mb-2xl">
+        <h2>Yin and Yang Balance</h2>
+        <p class="text-muted">The fundamental duality in Chinese philosophy</p>
+      </div>
+
+      <div class="report-section">
+        <div class="report-content text-center">
+          <div style="font-size: 5rem; margin-bottom: var(--space-xl);">&#9775;</div>
+          <p style="font-size: 1.125rem;">
+            Every zodiac year alternates between Yin (receptive, internal, feminine energy)
+            and Yang (active, external, masculine energy). Even years are Yang, odd years are Yin.
+          </p>
+          <p style="font-size: 1.125rem;">
+            Couples with opposite polarities often experience natural balance and complementary
+            dynamics, while same-polarity couples share similar approaches but may need to
+            consciously create balance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="background: var(--gradient-harmony); color: white;">
+    <div class="container text-center">
+      <h2 style="color: white; margin-bottom: var(--space-lg);">Discover Your Compatibility</h2>
+      <p style="font-size: 1.25rem; opacity: 0.9; margin-bottom: var(--space-2xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Now that you understand the principles, find out how you and your partner match up.
+      </p>
+      <a href="index.html#calculator" class="btn btn-lg" style="background: white; color: var(--rose-primary);">
+        Calculate Your Compatibility
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon">&#9775;</div>
+            <div class="footer-logo-text">HarmonyMatch</div>
+          </div>
+          <p class="footer-description">
+            Combining ancient Chinese wisdom with modern relationship insights
+            to help couples build lasting harmony.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Explore</div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Zodiac</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Resources</div>
+          <div class="footer-links">
+            <a href="about.html#zodiac-signs" class="footer-link">12 Zodiac Signs</a>
+            <a href="about.html#elements" class="footer-link">Five Elements</a>
+            <a href="about.html#compatibility" class="footer-link">Compatibility Guide</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Legal</div>
+          <div class="footer-links">
+            <a href="legal/terms.html" class="footer-link">Terms of Service</a>
+            <a href="legal/privacy.html" class="footer-link">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; 2025 Harmony Match. All rights reserved.
+        </div>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Twitter">t</a>
+          <a href="#" aria-label="Instagram">i</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="src/lib/zodiac-calculator.js"></script>
+  <script src="src/lib/bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover your perfect match with Chinese astrology. Calculate relationship compatibility based on zodiac signs and elements.">
+  <meta name="keywords" content="Chinese zodiac, compatibility, relationships, astrology, harmony, love match">
+  <title>Harmony Match - Chinese Wisdom for Modern Relationships</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+  <!-- Skip Navigation Link for Screen Readers and Keyboard Users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Harmony Match Home">
+        <div class="logo-icon" aria-hidden="true">&#9775;</div>
+        <div class="logo-text">Harmony<span>Match</span></div>
+      </a>
+      <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active" aria-current="page">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="#calculator" class="btn btn-primary btn-sm">Get Started</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content animate-fadeInUp">
+        <div class="hero-badge">
+          <span>&#9775;</span>
+          The system Chinese families have used for centuries
+        </div>
+        <h1 class="hero-title">
+          Are You Two <span class="highlight">Actually Compatible?</span> Or Just Hoping You Are?
+        </h1>
+        <p class="hero-subtitle">
+          Chinese astrology has documented relationship dynamics for over two millennia. Some zodiac combinations naturally complement each other; others require more intentional effort. Understanding your unique pairing provides a framework for deeper connection and more effective communication.
+        </p>
+        <div class="hero-cta">
+          <a href="#calculator" class="btn btn-primary btn-lg">Check My Compatibility Free</a>
+          <a href="about.html" class="btn btn-secondary btn-lg">How It Works</a>
+        </div>
+        <p class="hero-trust" style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.7;">27,000+ couples have checked their match</p>
+      </div>
+      <div class="hero-decoration text-chinese" aria-hidden="true">&#32536;</div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <main id="main-content">
+  <section class="section" id="calculator">
+    <div class="container container-lg">
+      <div class="text-center mb-2xl">
+        <h2>Calculate Your Compatibility</h2>
+        <p class="text-muted">Enter both birth years to reveal your cosmic connection</p>
+      </div>
+
+      <form id="compatibilityForm" class="compatibility-form">
+        <div class="grid grid-cols-2 gap-xl">
+          <!-- Partner 1 -->
+          <div class="partner-card partner-1">
+            <div class="partner-title">
+              <div class="partner-icon">&#10084;</div>
+              <div>
+                <h4>Partner One</h4>
+                <p class="text-muted">Enter birth year</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="year1" class="form-label">Birth Year</label>
+              <input type="number" id="year1" name="year1" class="form-input"
+                     placeholder="e.g., 1990" min="1920" max="2024" required>
+              <p class="form-hint">Year between 1920 and present</p>
+              <p class="form-error hidden" id="year1Error"></p>
+            </div>
+            <div class="zodiac-preview hidden" id="zodiac1Preview">
+              <div class="flex items-center gap-md">
+                <span class="zodiac-emoji" id="zodiac1Emoji"></span>
+                <div>
+                  <div class="zodiac-name" id="zodiac1Name"></div>
+                  <div class="zodiac-chinese text-chinese" id="zodiac1Chinese"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Partner 2 -->
+          <div class="partner-card partner-2">
+            <div class="partner-title">
+              <div class="partner-icon">&#10084;</div>
+              <div>
+                <h4>Partner Two</h4>
+                <p class="text-muted">Enter birth year</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="year2" class="form-label">Birth Year</label>
+              <input type="number" id="year2" name="year2" class="form-input"
+                     placeholder="e.g., 1992" min="1920" max="2024" required>
+              <p class="form-hint">Year between 1920 and present</p>
+              <p class="form-error hidden" id="year2Error"></p>
+            </div>
+            <div class="zodiac-preview hidden" id="zodiac2Preview">
+              <div class="flex items-center gap-md">
+                <span class="zodiac-emoji" id="zodiac2Emoji"></span>
+                <div>
+                  <div class="zodiac-name" id="zodiac2Name"></div>
+                  <div class="zodiac-chinese text-chinese" id="zodiac2Chinese"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-2xl">
+          <button type="submit" class="btn btn-primary btn-lg">
+            Reveal Your Compatibility
+          </button>
+          <p style="margin-top: 1rem; font-size: 0.8rem; color: #666;">Your privacy is protected: We never share your information. No account required.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Zodiac Overview -->
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <h2>The 12 Zodiac Signs</h2>
+        <p class="text-muted">Each sign carries unique traits and energies</p>
+      </div>
+
+      <div class="zodiac-wheel" id="zodiacWheel">
+        <!-- Generated by JavaScript -->
+      </div>
+
+      <div class="divider-ornate">
+        <span>&#21313;&#20108;&#29983;&#32918;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <h2>Why Couples Use This</h2>
+        <p class="text-muted">A practical framework for understanding relationship dynamics</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-xl">
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="report-section-icon mx-auto mb-lg" style="background: var(--rose-pale); margin: 0 auto var(--space-lg);">
+              &#127894;
+            </div>
+            <h4>Patterns, Not Predictions</h4>
+            <p class="text-muted">
+              This is not fortune telling. It is pattern recognition refined over centuries -
+              which zodiac pairs tend to spark, which tend to struggle, and why.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="report-section-icon mx-auto mb-lg" style="background: var(--gold-pale); color: var(--gold-deep); margin: 0 auto var(--space-lg);">
+              &#128218;
+            </div>
+            <h4>Real Talk About Your Match</h4>
+            <p class="text-muted">
+              Where you naturally click. Where you will probably clash. And most importantly -
+              what actually helps when you hit rough patches.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="report-section-icon mx-auto mb-lg" style="background: var(--jade-light); color: var(--jade); margin: 0 auto var(--space-lg);">
+              &#128161;
+            </div>
+            <h4>Things You Can Actually Do</h4>
+            <p class="text-muted">
+              Not vague advice like "communicate better." Real, specific practices that help
+              your particular combination work through the hard stuff.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Preview Section -->
+  <section class="section bg-cream" id="pricing-preview">
+    <div class="container">
+      <div class="text-center mb-2xl">
+        <h2>Choose Your Reading</h2>
+        <p class="text-muted">Find the perfect level of insight for your relationship</p>
+      </div>
+
+      <div class="grid grid-cols-4 gap-lg">
+        <!-- Free Tier -->
+        <div class="pricing-card">
+          <div class="pricing-name">Free</div>
+          <div class="pricing-price">$0</div>
+          <p class="text-muted mb-lg">Basic compatibility</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature">Compatibility score</li>
+            <li class="pricing-feature">Both zodiac signs</li>
+            <li class="pricing-feature">Element overview</li>
+          </ul>
+          <a href="#calculator" class="btn btn-outline btn-block">Get My Free Reading</a>
+        </div>
+
+        <!-- Essential -->
+        <div class="pricing-card">
+          <div class="pricing-name">Essential</div>
+          <div class="pricing-price"><span class="currency">$</span>19</div>
+          <p class="text-muted mb-lg">Detailed analysis</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature">Everything in Free</li>
+            <li class="pricing-feature">Detailed compatibility analysis</li>
+            <li class="pricing-feature">Strengths & challenges</li>
+            <li class="pricing-feature">Element interaction</li>
+          </ul>
+          <a href="pricing.html" class="btn btn-secondary btn-block">Get My Essential Report</a>
+        </div>
+
+        <!-- Master -->
+        <div class="pricing-card featured">
+          <div class="pricing-name">Master</div>
+          <div class="pricing-price"><span class="currency">$</span>35</div>
+          <p class="text-muted mb-lg">Complete guide</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature">Everything in Essential</li>
+            <li class="pricing-feature">Full relationship guide</li>
+            <li class="pricing-feature">Harmony practices</li>
+            <li class="pricing-feature">Communication tips</li>
+            <li class="pricing-feature">PDF download</li>
+          </ul>
+          <a href="pricing.html" class="btn btn-gold btn-block">Get My Master Guide</a>
+        </div>
+
+        <!-- Ultimate -->
+        <div class="pricing-card">
+          <div class="pricing-name">Ultimate</div>
+          <div class="pricing-price"><span class="currency">$</span>49</div>
+          <p class="text-muted mb-lg">Everything included</p>
+          <ul class="pricing-features">
+            <li class="pricing-feature">Everything in Master</li>
+            <li class="pricing-feature">Yearly forecasts</li>
+            <li class="pricing-feature">Monthly updates</li>
+            <li class="pricing-feature">Lucky dates guide</li>
+            <li class="pricing-feature">Priority support</li>
+          </ul>
+          <a href="pricing.html" class="btn btn-secondary btn-block">Get My Ultimate Package</a>
+        </div>
+      </div>
+
+      <div class="text-center mt-2xl">
+        <a href="pricing.html" class="btn btn-outline">View Full Pricing Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="container container-md">
+      <div class="text-center mb-2xl">
+        <h2>What Our Members Say</h2>
+        <p class="text-muted">Real couples who found clarity through compatibility insights</p>
+      </div>
+
+      <div class="card">
+        <div class="card-body text-center p-2xl">
+          <p class="text-chinese" style="font-size: 3rem; color: var(--gold-primary); margin-bottom: var(--space-lg);">&#8220;</p>
+          <p style="font-size: 1.25rem; line-height: 1.8; color: var(--text-medium); margin-bottom: var(--space-xl);">
+            After 18 years of marriage, we thought we knew everything about each other. But the compatibility report explained recurring friction points we had never articulated. At this stage of life, with teenagers and demanding careers, the practical communication strategies have been genuinely valuable.
+          </p>
+          <div class="text-muted">
+            <strong>Sarah & Michael Thompson</strong> - Married 18 years, IT executives
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="background: var(--gradient-harmony); color: white;" aria-labelledby="cta-heading">
+    <div class="container text-center">
+      <h2 id="cta-heading" style="color: white; margin-bottom: var(--space-lg);">Strengthen Your Partnership with Ancient Wisdom</h2>
+      <p style="font-size: 1.25rem; margin-bottom: var(--space-2xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Whether you are navigating midlife transitions, deepening a long-term relationship, or evaluating a new partnership - understanding your zodiac compatibility provides a valuable perspective.
+      </p>
+      <a href="#calculator" class="btn btn-lg" style="background: white; color: var(--rose-primary);">
+        See My Compatibility Score Free
+      </a>
+    </div>
+  </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon">&#9775;</div>
+            <div class="footer-logo-text">HarmonyMatch</div>
+          </div>
+          <p class="footer-description">
+            Combining ancient Chinese wisdom with modern relationship insights
+            to help couples build lasting harmony.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Explore</div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Zodiac</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Resources</div>
+          <div class="footer-links">
+            <a href="about.html#zodiac-signs" class="footer-link">12 Zodiac Signs</a>
+            <a href="about.html#elements" class="footer-link">Five Elements</a>
+            <a href="about.html#compatibility" class="footer-link">Compatibility Guide</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Legal</div>
+          <div class="footer-links">
+            <a href="legal/terms.html" class="footer-link">Terms of Service</a>
+            <a href="legal/privacy.html" class="footer-link">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; 2025 Harmony Match. All rights reserved.
+        </div>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Twitter">t</a>
+          <a href="#" aria-label="Instagram">i</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="src/lib/zodiac-calculator.js"></script>
+  <script src="src/lib/bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "harmony-match-api",
+  "version": "1.0.0",
+  "description": "API endpoints for Harmony Match report generation",
+  "type": "module",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

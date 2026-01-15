@@ -1,0 +1,23 @@
+{
+  "name": "harmony-match",
+  "version": "1.0.0",
+  "description": "Chinese Wisdom for Modern Relationships - Compatibility and Harmony Reports",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site ready'",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "chinese zodiac",
+    "compatibility",
+    "relationships",
+    "harmony",
+    "astrology"
+  ],
+  "author": "Harmony Match",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

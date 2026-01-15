@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your Chinese zodiac compatibility results. Discover your relationship harmony score and insights.">
+  <title>Your Compatibility Results - Harmony Match</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles/main.css">
+  <style>
+    .results-hero {
+      padding-top: 100px;
+      padding-bottom: var(--space-3xl);
+      background: var(--gradient-subtle);
+    }
+
+    .partners-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3xl);
+      margin-bottom: var(--space-3xl);
+    }
+
+    .partner-zodiac {
+      text-align: center;
+    }
+
+    .partner-zodiac .emoji {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: var(--space-md);
+    }
+
+    .partner-zodiac .animal-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: var(--space-xs);
+    }
+
+    .partner-zodiac .chinese-name {
+      font-family: var(--font-chinese);
+      font-size: 2rem;
+      color: var(--rose-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .partner-zodiac .element-badge {
+      display: inline-block;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .partners-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .connector-heart {
+      font-size: 3rem;
+      color: var(--rose-primary);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .connector-polarity {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: var(--space-sm);
+    }
+
+    .score-breakdown {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .score-item {
+      text-align: center;
+      padding: var(--space-lg);
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .score-item-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--rose-primary);
+    }
+
+    .score-item-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: var(--space-xs);
+    }
+
+    .locked-content {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .locked-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, transparent 0%, white 80%);
+      z-index: 1;
+    }
+
+    .locked-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: var(--space-3xl) var(--space-xl);
+      text-align: center;
+      z-index: 2;
+      background: linear-gradient(180deg, transparent 0%, white 30%);
+    }
+
+    .locked-icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    .dynamics-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+
+    .dynamics-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .dynamics-tag.positive {
+      background: var(--jade-light);
+      color: var(--jade);
+    }
+
+    .dynamics-tag.negative {
+      background: var(--rose-pale);
+      color: var(--rose-deep);
+    }
+
+    .dynamics-tag.neutral {
+      background: var(--gold-pale);
+      color: var(--gold-deep);
+    }
+
+    @media (max-width: 768px) {
+      .partners-display {
+        flex-direction: column;
+        gap: var(--space-xl);
+      }
+
+      .partner-zodiac .emoji {
+        font-size: 4rem;
+      }
+
+      .score-breakdown {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9775;</div>
+        <div class="logo-text">Harmony<span>Match</span></div>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="index.html#calculator" class="btn btn-primary btn-sm">New Reading</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Results Hero -->
+  <section class="results-hero">
+    <div class="container">
+      <!-- Partners Display -->
+      <div class="partners-display animate-fadeInUp">
+        <div class="partner-zodiac" id="partner1Display">
+          <span class="emoji" id="partner1Emoji"></span>
+          <div class="animal-name" id="partner1Animal"></div>
+          <div class="chinese-name text-chinese" id="partner1Chinese"></div>
+          <span class="element-badge" id="partner1Element"></span>
+        </div>
+
+        <div class="partners-connector">
+          <span class="connector-heart">&#10084;</span>
+          <span class="connector-polarity" id="polarityDisplay"></span>
+        </div>
+
+        <div class="partner-zodiac" id="partner2Display">
+          <span class="emoji" id="partner2Emoji"></span>
+          <div class="animal-name" id="partner2Animal"></div>
+          <div class="chinese-name text-chinese" id="partner2Chinese"></div>
+          <span class="element-badge" id="partner2Element"></span>
+        </div>
+      </div>
+
+      <!-- Compatibility Score -->
+      <div class="compatibility-score animate-fadeInUp delay-200">
+        <div class="score-circle">
+          <svg viewBox="0 0 180 180">
+            <defs>
+              <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="var(--rose-primary)" />
+                <stop offset="100%" stop-color="var(--gold-primary)" />
+              </linearGradient>
+            </defs>
+            <circle class="score-circle-bg" cx="90" cy="90" r="80" />
+            <circle class="score-circle-progress" id="scoreProgress" cx="90" cy="90" r="80" />
+          </svg>
+          <div class="score-value" id="scoreValue">--</div>
+        </div>
+        <div class="score-label" id="scoreLevel">Calculating...</div>
+        <p class="score-description" id="scoreLevelDescription"></p>
+
+        <!-- Score Breakdown -->
+        <div class="score-breakdown">
+          <div class="score-item">
+            <div class="score-item-value" id="animalScore">--</div>
+            <div class="score-item-label">Animal Compatibility</div>
+          </div>
+          <div class="score-item">
+            <div class="score-item-value" id="elementScore">--</div>
+            <div class="score-item-label">Element Harmony</div>
+          </div>
+          <div class="score-item">
+            <div class="score-item-value" id="polarityScore">--</div>
+            <div class="score-item-label">Yin-Yang Balance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Relationship Dynamics (Free) -->
+  <section class="section">
+    <div class="container container-lg">
+      <div class="report-section animate-fadeInUp delay-300">
+        <div class="report-section-header">
+          <div class="report-section-icon">&#9775;</div>
+          <h3 class="report-section-title">Relationship Dynamics</h3>
+        </div>
+        <div class="report-content">
+          <p id="elementDescription"></p>
+          <p id="polarityDescription"></p>
+
+          <div class="dynamics-tags" id="dynamicsTags">
+            <!-- Generated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Strengths (Free preview) -->
+      <div class="report-section animate-fadeInUp delay-400">
+        <div class="report-section-header">
+          <div class="report-section-icon" style="background: var(--jade-light); color: var(--jade);">&#10003;</div>
+          <h3 class="report-section-title">Your Strengths</h3>
+        </div>
+        <div class="report-content" id="strengthsContent">
+          <!-- Generated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Challenges (Locked for premium) -->
+      <div class="report-section locked-content" id="challengesSection">
+        <div class="report-section-header">
+          <div class="report-section-icon" style="background: var(--rose-pale); color: var(--rose-primary);">&#9888;</div>
+          <h3 class="report-section-title">Potential Challenges</h3>
+        </div>
+        <div class="report-content" id="challengesContent" style="min-height: 200px;">
+          <p>Every relationship has areas that require attention and understanding. Based on your zodiac pairing, there are specific dynamics to be mindful of...</p>
+          <p>The element interaction between you suggests that communication styles may differ. One partner may prefer direct expression while the other values subtlety...</p>
+          <p>Your polarity combination indicates that balancing activity and rest, initiative and receptivity will be an ongoing theme...</p>
+        </div>
+        <div class="locked-overlay">
+          <div class="locked-icon">&#128274;</div>
+          <h4>Unlock Full Challenges Analysis</h4>
+          <p class="text-muted mb-lg">Upgrade to Essential or higher to see detailed challenges and how to overcome them</p>
+          <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
+        </div>
+      </div>
+
+      <!-- Relationship Advice (Locked for premium) -->
+      <div class="report-section locked-content" id="adviceSection">
+        <div class="report-section-header">
+          <div class="report-section-icon" style="background: var(--gold-pale); color: var(--gold-deep);">&#128161;</div>
+          <h3 class="report-section-title">Personalized Relationship Advice</h3>
+        </div>
+        <div class="report-content" style="min-height: 250px;">
+          <h4>Communication Harmony</h4>
+          <p>Understanding how your zodiac signs communicate is key to building lasting harmony. Your unique pairing suggests specific approaches...</p>
+
+          <h4>Nurturing Your Bond</h4>
+          <p>Based on your elemental interaction, there are powerful ways to strengthen your connection through shared activities and rituals...</p>
+
+          <h4>Navigating Conflict</h4>
+          <p>When challenges arise, your zodiac combination provides insights into the most effective resolution strategies...</p>
+        </div>
+        <div class="locked-overlay">
+          <div class="locked-icon">&#128274;</div>
+          <h4>Unlock Personalized Advice</h4>
+          <p class="text-muted mb-lg">Get the Master tier for complete relationship guidance, harmony practices, and more</p>
+          <a href="pricing.html" class="btn btn-gold">Upgrade to Master - $35</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upgrade CTA -->
+  <section class="section bg-cream">
+    <div class="container container-md text-center">
+      <h2 class="mb-lg">Want the Complete Picture?</h2>
+      <p class="text-muted mb-2xl">
+        Your free reading provides a foundation. Unlock deeper insights with our premium tiers:
+      </p>
+
+      <div class="grid grid-cols-3 gap-lg mb-2xl">
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="pricing-price" style="font-size: 2rem;">$19</div>
+            <div class="pricing-name">Essential</div>
+            <p class="text-muted">Detailed analysis & challenges</p>
+          </div>
+        </div>
+        <div class="card" style="border: 2px solid var(--gold-primary);">
+          <div class="card-body text-center">
+            <div class="pricing-price" style="font-size: 2rem; color: var(--gold-deep);">$35</div>
+            <div class="pricing-name">Master</div>
+            <p class="text-muted">Full guide & advice</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="pricing-price" style="font-size: 2rem;">$49</div>
+            <div class="pricing-name">Ultimate</div>
+            <p class="text-muted">Everything + forecasts</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="pricing.html" class="btn btn-primary btn-lg">Unlock Full Analysis</a>
+    </div>
+  </section>
+
+  <!-- Share Results -->
+  <section class="section">
+    <div class="container text-center">
+      <h3 class="mb-lg">Share Your Compatibility Reading</h3>
+      <p class="text-muted mb-xl">Help friends discover their relationship harmony</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <button class="btn btn-secondary" onclick="shareToTwitter()">Share on X</button>
+        <button class="btn btn-secondary" id="copy-link-btn" onclick="copyResultsLink()">Copy Link</button>
+        <button class="btn btn-secondary" onclick="shareToLinkedIn()">Share on LinkedIn</button>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.875rem;">Join 7,293 couples who discovered their harmony this month</p>
+    </div>
+  </section>
+
+  <!-- Try Another -->
+  <section class="section">
+    <div class="container text-center">
+      <h3 class="mb-lg">Calculate Another Compatibility</h3>
+      <p class="text-muted mb-xl">Explore the harmony between different zodiac pairings</p>
+      <a href="index.html#calculator" class="btn btn-secondary btn-lg">New Compatibility Reading</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon">&#9775;</div>
+            <div class="footer-logo-text">HarmonyMatch</div>
+          </div>
+          <p class="footer-description">
+            Combining ancient Chinese wisdom with modern relationship insights
+            to help couples build lasting harmony.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Explore</div>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Zodiac</a>
+            <a href="pricing.html" class="footer-link">Pricing</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Resources</div>
+          <div class="footer-links">
+            <a href="about.html#zodiac-signs" class="footer-link">12 Zodiac Signs</a>
+            <a href="about.html#elements" class="footer-link">Five Elements</a>
+            <a href="about.html#compatibility" class="footer-link">Compatibility Guide</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Legal</div>
+          <div class="footer-links">
+            <a href="legal/terms.html" class="footer-link">Terms of Service</a>
+            <a href="legal/privacy.html" class="footer-link">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; 2025 Harmony Match. All rights reserved.
+        </div>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Twitter">t</a>
+          <a href="#" aria-label="Instagram">i</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="src/lib/zodiac-calculator.js"></script>
+  <script src="src/lib/bundle.js"></script>
+  <script>
+  // Social sharing functions
+  function shareToTwitter() {
+    var text = encodeURIComponent("Just discovered our Chinese zodiac compatibility score! Find out your relationship harmony:");
+    var url = encodeURIComponent(window.location.origin + "/index.html#calculator");
+    window.open("https://twitter.com/intent/tweet?text=" + text + "&url=" + url, '_blank', 'width=550,height=420');
+  }
+
+  function copyResultsLink() {
+    var url = window.location.origin + "/index.html#calculator";
+    navigator.clipboard.writeText(url).then(function() {
+      var btn = document.getElementById('copy-link-btn');
+      var originalText = btn.innerHTML;
+      btn.innerHTML = 'Copied!';
+      setTimeout(function() { btn.innerHTML = originalText; }, 2000);
+    });
+  }
+
+  function shareToLinkedIn() {
+    var url = encodeURIComponent(window.location.origin + "/index.html#calculator");
+    window.open("https://www.linkedin.com/sharing/share-offsite/?url=" + url, '_blank', 'width=550,height=420');
+  }
+  </script>
+</body>
+</html>

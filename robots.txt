@@ -1,0 +1,21 @@
+# Harmony Match - Chinese Wisdom for Modern Relationships
+# https://harmonymatch.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://harmonymatch.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow API endpoints
+Disallow: /api/
+
+# Allow all main pages
+Allow: /index.html
+Allow: /pricing.html
+Allow: /results.html
+Allow: /about.html
+Allow: /legal/
